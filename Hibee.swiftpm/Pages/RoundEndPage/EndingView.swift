@@ -19,8 +19,15 @@ struct EndingView: View {
         Spacer()
     }
 }
+
 extension Text {
     func emojiTextStyle() -> Text {
         self.font(.largeTitle)
+    }
+}
+
+struct EndingView_Previews: PreviewProvider {
+    static var previews: some View {
+        EndingView()
     }
 }
