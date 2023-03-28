@@ -55,6 +55,8 @@ struct CardFlipView: View {
     @State var backDegrees = Array(repeating: 0.0, count: 10)
     @State var frontDegrees = Array(repeating: -90.0, count: 10)
     @State var isFlipped = Array(repeating: true, count: 10)
+    @State private var cardFlip = false
+    @State private var degrees : Double = 0
     let width : CGFloat = 200
     let height : CGFloat = 300
     let durationAndDelay : CGFloat = 0.3
@@ -81,10 +83,36 @@ struct CardFlipView: View {
                             CardBack(width: width, height: height, degree: $backDegrees[num])
                         }.onTapGesture {
                             flipCard(num)
+                            //openQuizPop in
+                            self.cardFlip.toggle()
+                            
+                        }.fullScreenCover(isPresented: self.$cardFlip){
+                            ZStack{
+                                VStack{
+                                    QuizView(cardFlip: $cardFlip).rotation3DEffect(.degrees(degrees), axis: (x:0, y:1, z: 0),anchor: .center, perspective: 1).onAppear{
+                                        withAnimation{
+                                            self.degrees += 360
+                                        }
+                                    }
+                                    
+                                }
+                            }.background(BackgroundBlurView())
                         }
                         .frame(width: 150, height: 400)
                 }
         }
         .navigationBarBackButtonHidden(true)
+    }
+}
+struct BackgroundBlurView : UIViewRepresentable {
+    func makeUIView(context: Context) -> some UIView {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
     }
 }
