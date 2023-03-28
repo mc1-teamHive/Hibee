@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct GameStats {
+struct PanelStats {
     let round: Int
     let totalRounds: Int
     let remainingLives: Int
 }
 
 struct TopPanelView: View {
-    let gameStats = GameStats(round: 1, totalRounds: 3, remainingLives: 3)
+    let gameStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)
     
     var body: some View {
         HStack {

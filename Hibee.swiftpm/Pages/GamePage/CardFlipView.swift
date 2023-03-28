@@ -20,6 +20,7 @@ struct CardFront: View {
         }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
+
 // MARK: Card Back View
 struct CardBack: View {
     let width: CGFloat
