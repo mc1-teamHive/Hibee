@@ -31,8 +31,8 @@ struct TopPanelView: View {
 
 extension Text {
     func panelTextStyle() -> Text {
-        self.font(.headline)
-            .foregroundColor(Color(red: 74/255, green: 91/255, blue: 109/255))
+        self.font(.title)
+            .foregroundColor(Color(.white))
     }
 }
 
