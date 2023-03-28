@@ -45,14 +45,14 @@ struct CardBack: View {
 struct CardFlipView: View {
     @State private var backDegrees = Array(repeating: 0.0, count: 10)
     @State private var frontDegrees = Array(repeating: -90.0, count: 10)
-    @State private var isFlipped = Array(repeating: true, count: 10)
+    @State private var isFlipped = Array(repeating: false, count: 10)
     @State private var cardFlip = false
     @State private var degrees: Double = 0
     let width: CGFloat = 200
     let height: CGFloat = 300
     let durationAndDelay: CGFloat = 0.3
     func flipCard(_ num: Int) {
-        if isFlipped[num] {
+        if isFlipped[num] == false{
             isFlipped[num] = true
             withAnimation(.linear(duration: Double(durationAndDelay))) {
                 backDegrees[num] = 90
@@ -71,8 +71,9 @@ struct CardFlipView: View {
                     CardFront(width: width, height: height, num: num, degree: $frontDegrees[num])
                     CardBack(width: width, height: height, degree: $backDegrees[num])
                 }.onTapGesture {
-                    flipCard(num)
-                    self.cardFlip.toggle()
+                    if isFlipped[num]==false{
+                        flipCard(num)
+                        self.cardFlip.toggle()}
                 }.fullScreenCover(isPresented: self.$cardFlip) {
                     ZStack {
                         VStack {
