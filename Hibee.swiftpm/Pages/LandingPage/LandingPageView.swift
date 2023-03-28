@@ -30,7 +30,8 @@ struct LandingPageView: View {
 struct GrayButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding()
+            .padding([.leading, .trailing], 100)
+            .padding([.top, .bottom], 20)
             .background(Color(red: 74/255, green: 92/255, blue: 109/255))
             .foregroundColor(.white)
             .clipShape(Capsule())

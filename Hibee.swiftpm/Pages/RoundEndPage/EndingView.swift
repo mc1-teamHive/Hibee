@@ -7,14 +7,20 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct EndingView: View {
+    @State private var isButtonActive = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Spacer()
+        Text("✌🏻")
+            .emojiTextStyle()
+        Text("그대에게 주어지는 합격목걸이")
+            .endingTextStyle()
+        Image(uiImage: UIImage(named: "ending.png")!)
+        Spacer()
     }
 }
-
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        SwiftUIView()
+extension Text {
+    func emojiTextStyle() -> Text {
+        self.font(.largeTitle)
     }
 }

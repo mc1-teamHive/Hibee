@@ -3,7 +3,7 @@ import SwiftUI
 struct QuizView: View {
     @Binding var cardFlip : Bool
     @State var round : Int = 1
-    @State private var answerO = false
+    @State private var answer = false
     @State private var btnclick = false
     let randomInt = Int.random(in: 0..<quizs.count)
 //    func answercheck() -> some View{
@@ -30,28 +30,19 @@ struct QuizView: View {
             }.frame(alignment: .leading)
             VStack{
                 Button(action: {
-                    
-                    if(quizs[randomInt].answernum == 1){
-                        answerO = true
-                    }else{answerO = false}
-                    
+                    answer = quizs[randomInt].answernum == 1 ? true : false
                     btnclick = true
                 }){
                     RoundedRectangle(cornerRadius: 100).fill(Color.black).opacity(0.5).frame(width: 400, height: 100).overlay(Text("\(quizs[randomInt].example1)"))
                 }
                 
                 Button(action: {
-                    if(quizs[randomInt].answernum == 2){
-                        answerO = true
-                    }else{answerO = false}
+                    answer = quizs[randomInt].answernum == 2 ? true : false
                     btnclick = true
-                    
                 }){
                     RoundedRectangle(cornerRadius: 100).fill(Color.black).opacity(0.5).frame(width: 400, height: 100).overlay(Text("\(quizs[randomInt].example2)"))}
                 Button(action: {
-                    if(quizs[randomInt].answernum == 3){
-                        answerO = true
-                    }else{answerO = false}
+                    answer = quizs[randomInt].answernum == 3 ? true : false
                     btnclick = true
                 }){
                     RoundedRectangle(cornerRadius: 100).fill(Color.black).opacity(0.5).frame(width: 400, height: 100).overlay(Text("\(quizs[randomInt].example3)"))}
@@ -61,22 +52,23 @@ struct QuizView: View {
           
             
         }.sheet(isPresented: $btnclick){
-            switch self.answerO {
-            case true :
-                VStack{
+            
+            if self.answer {
+                VStack {
                     Text("정답입니다").font(.system(size: 80, weight: .bold)).padding(EdgeInsets(top: 100, leading: 0, bottom: 50, trailing: 0))
-                    Text(quizs[randomInt].description).font(.system(size: 30, weight: .medium   ))
+                    Text(quizs[randomInt].description).font(.system(size: 30, weight: .medium))
                     Spacer()
                     Image("Caesar").resizable().frame(width: 400,height: 400)
                 }
-            case false:
-                VStack{
+            } else {
+                VStack {
                     Text("오답입니다.").font(.system(size: 80, weight: .bold)).padding(EdgeInsets(top: 100, leading: 0, bottom: 50, trailing: 0))
                     Text(quizs[randomInt].description).font(.system(size: 30, weight: .medium)).frame(maxWidth: .infinity, maxHeight: 200).lineLimit(5)
                     Spacer()
                     Image("Wrongperson").resizable().frame(width: 400,height: 400)
                 }
             }
+
         }
     }
 }

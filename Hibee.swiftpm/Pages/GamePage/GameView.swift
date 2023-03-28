@@ -24,9 +24,3 @@ struct GameView: View {
             .scaledToFill())
     }
 }
-
-struct SwiftUIView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView().previewInterfaceOrientation(.landscapeLeft)
-    }
-}
