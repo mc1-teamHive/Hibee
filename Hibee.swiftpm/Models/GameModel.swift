@@ -22,6 +22,7 @@ struct BossModel {
     let name: String
     let maxHealth: Int
     var currentHealth: Int
+    
     mutating func takeDamage(_ damage: Int) {
         currentHealth -= damage
         if currentHealth < 0 {
