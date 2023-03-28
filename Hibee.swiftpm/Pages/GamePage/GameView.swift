@@ -17,8 +17,11 @@ struct GameView: View {
             BossView()
             CardFlipView()
             // PopUpView()
-            
         }
+        // need swap bkg when round changes
+        .background(
+            Image(uiImage: UIImage(named: "backgrounds_1")!).resizable()
+            .scaledToFill())
     }
 }
 
