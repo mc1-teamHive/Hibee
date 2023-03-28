@@ -15,7 +15,8 @@ struct TopPanelView: View {
                 Text("Round \(gameStats.round)/\(gameStats.totalRounds)")
                     .panelTextStyle()
                 Spacer().frame(width: 10)
-                HStack{Text("Life")
+                HStack{
+                    Text("Life")
                         .panelTextStyle()
                     Text(String(repeating: "♥️", count: gameStats.remainingLives))
                     .padding(.bottom, 10)}
