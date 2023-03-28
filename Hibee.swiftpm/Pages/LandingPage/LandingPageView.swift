@@ -18,7 +18,7 @@ struct LandingPageView: View {
                 }
                 .buttonStyle(GrayButton())
                 .padding(.bottom, 150)
-                
+
                 NavigationLink(destination: GameView(), isActive: $isCardFlipViewActive){
                     EmptyView()
                 }
