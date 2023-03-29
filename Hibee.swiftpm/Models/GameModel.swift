@@ -17,7 +17,7 @@ struct Quiz {
 }
 // set Boss Info
 //struct Boss{
-//    let names : [String] = ["Issac", "Gommin", "Lingo"]
+//    let names : [String] = ["Isaac", "Gommin", "Lingo"]
 //    let healths : [Int] = [3, 4, 6]
 //}
 // Boss Model

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BossView: View {
     var body: some View {
-        Image("Issac_1").resizable()
+        Image("Isaac_1").resizable()
             .frame(width: 500, height: 500)
 //            .padding(.bottom, -50)
     }
