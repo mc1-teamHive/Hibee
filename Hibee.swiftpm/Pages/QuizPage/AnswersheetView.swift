@@ -25,6 +25,6 @@ struct AnswerSheetView: View {
             Image(isCorrect ? "Caesar" : "Wrongperson")
                 .resizable()
                 .frame(width: 400, height: 400)
-        }.frame(width: 964, height: 864)
+        }
     }
 }
