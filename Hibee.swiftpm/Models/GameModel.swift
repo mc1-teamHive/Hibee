@@ -49,14 +49,14 @@ class GameModel {
     private(set) var bosses: [BossModel]
     private(set) var gameStats: GameStats
     private(set) var currentIndex: Int
-    
+
     init(quizzes: [QuizModel], bosses: [BossModel], gameStats: GameStats) {
         self.quizzes = quizzes
         self.bosses = bosses
         self.gameStats = gameStats
         self.currentIndex = 0
     }
-    
+
     func getCurrentQuiz() -> QuizModel {
         return quizzes[currentIndex]
     }
@@ -64,6 +64,8 @@ class GameModel {
     func getCurrentBoss() -> BossModel {
         return bosses[currentIndex]
     }
+    
+    //func for Caesar's HotDogTime
     
     func answerQuiz(optionIndex: Int) -> Bool {
         let isCorrect = quizzes[currentIndex].answer == optionIndex
@@ -75,10 +77,10 @@ class GameModel {
             currentBoss.takeDamage(1)
             bosses[currentIndex] = currentBoss
         }
-        
+
         return isCorrect
     }
-    
+
     func moveToNextQuiz() -> Bool {
         if currentIndex < quizzes.count - 1 {
             currentIndex += 1
@@ -86,11 +88,11 @@ class GameModel {
         }
         return false
     }
-    
+
     func isGameOver() -> Bool {
         return gameStats.remainingLives == 0 || currentIndex == quizzes.count - 1 && bosses[currentIndex].isDefeated
     }
-    
+
     func isGameWon() -> Bool {
         return currentIndex == quizzes.count - 1 && bosses[currentIndex].isDefeated
     }
