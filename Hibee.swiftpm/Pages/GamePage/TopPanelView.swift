@@ -12,8 +12,9 @@ struct PanelStats {
 }
 
 struct TopPanelView: View {
-    let gameStats: PanelStats
+    @EnvironmentObject var gameState: GameState
     
+    let gameStats: PanelStats
     init(gameStats: PanelStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)) {
         self.gameStats = gameStats
     }
@@ -27,7 +28,7 @@ struct TopPanelView: View {
                 HStack {
                     Text("Life")
                         .panelTextStyle()
-                    Text(String(repeating: "♥️", count: gameStats.remainingLives))
+                    Text(String(repeating: "♥️", count: gameState.remainingLives))
                         .padding(.bottom, 10)
                 }
             }

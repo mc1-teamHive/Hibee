@@ -1,5 +1,25 @@
 import SwiftUI
+ 
+struct ProgressBar: View {
+    @EnvironmentObject var gameState: GameState
+    @State private var healthPoint : Double = 100.0
+    @State private var progressViewColor : Color = .green
+    
+    var body: some View {
+        VStack {                                    //총 HP
+            ProgressView("HP", value: gameState.bossHealth, total: 100)
+                .progressViewStyle(RoundedRectProgressViewStyle())
+                .foregroundColor(progressViewColor)
+            Button {gameState.decreaseBossHealth()
+            } label: {
+                Text("Isaac")
+                    .font(.system(size: 30, weight: .bold)).foregroundColor(.white)
+            }
 
+        }
+        
+    }
+}
 
 struct RoundedRectProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -11,39 +31,5 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
                 .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * 250, height: 25)
         }
         .padding()
-    }
-}
- 
-
-struct ProgressBar: View {
-    
-    @State private var healthPoint : Double = 100.0
-    @State private var progressViewColor : Color = .green
-    
-    var body: some View {
-        VStack {                                    //총 HP
-            ProgressView("HP", value: healthPoint, total: 100)
-                .progressViewStyle(RoundedRectProgressViewStyle())
-                .foregroundColor(progressViewColor)
-            Button {
-                if healthPoint > 0 {
-                    healthPoint -= 20
-                }
-                if healthPoint < 30 {
-                    progressViewColor = .red
-                }
-                else if healthPoint < 50 {
-                    progressViewColor = .orange
-                }
-                else if healthPoint < 70 {
-                    progressViewColor = .yellow
-                }
-            } label: {
-                Text("Isaac")
-                    .font(.system(size: 30, weight: .bold)).foregroundColor(.white)
-            }
-
-        }
-        
     }
 }
