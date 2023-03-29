@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     var body: some View {
+        
         VStack{
             // Spacer for dont ignore safearea
             
@@ -20,10 +21,9 @@ struct GameView: View {
     
             CardFlipView()
             
-        }
-        // need swap bkg when round changes
-        .background(
-            Image(uiImage: UIImage(named: "backgrounds_1")!).resizable()
-            .scaledToFill())
+        } .background(
+            Image("backgrounds_1")
+        )
+        
     }
 }

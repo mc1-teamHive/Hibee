@@ -10,7 +10,7 @@ import SwiftUI
 struct AnswerSheetView: View {
     let questionNum: Int
     @Binding var isCorrect: Bool
-    
+    @Binding var isPresented : Bool
     var body: some View {
         VStack {
             Text(isCorrect ? "정답입니다" : "오답입니다.")
@@ -25,6 +25,8 @@ struct AnswerSheetView: View {
             Image(isCorrect ? "Caesar" : "Wrongperson")
                 .resizable()
                 .frame(width: 400, height: 400)
-        }.frame(width: 964, height: 864)
+        }.frame(width: 964, height: 864).onTapGesture {
+            isPresented.toggle()
+        }
     }
 }

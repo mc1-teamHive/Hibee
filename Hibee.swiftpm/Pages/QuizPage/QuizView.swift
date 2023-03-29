@@ -5,7 +5,7 @@ struct QuizView: View {
     @State var round: Int = 1
     @State private var isAnswer = false
     @State private var btnclick = false
-
+    @Binding var isPresented : Bool
     let randomInt = Int.random(in: 0..<quizzes.count)
 
     var body: some View {
@@ -31,8 +31,11 @@ struct QuizView: View {
             }.frame(width: geo.size.width, height:  geo.size.height)
             
         }
-        .sheet(isPresented: $btnclick) {
-            AnswerSheetView(questionNum: randomInt, isCorrect: $isAnswer)
+        .sheet(isPresented: $btnclick, onDismiss: {
+            isPresented.toggle()
+        }) {
+            
+            AnswerSheetView( questionNum: randomInt, isCorrect: $isAnswer, isPresented: $btnclick)
         }
     }
 

@@ -49,7 +49,7 @@ struct CardImage: View {
             .fullScreenCover(isPresented: self.$isToggled) {
                 ZStack {
                     VStack {
-                        QuizView()
+                        QuizView(isPresented: self.$isToggled)
                             .rotation3DEffect(
                                 .degrees(degrees),
                                 axis: (x: 0, y: 1, z: 0),
@@ -62,7 +62,7 @@ struct CardImage: View {
                                 }
                             }
                     }
-                }.background(BackgroundBlurView())
+                }.background(BackgroundBlurView().ignoresSafeArea())
 
             }
     }
