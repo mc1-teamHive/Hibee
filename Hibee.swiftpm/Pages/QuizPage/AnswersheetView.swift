@@ -24,7 +24,7 @@ struct AnswerSheetView: View {
             Spacer()
             Image(isCorrect ? "Caesar" : "Wrongperson")
                 .resizable()
-            .frame(width: 400, height: 400)}.onTapGesture {
+            .frame(width: 400, height: 400)}.frame(width: 964, height: 864).onTapGesture {
                 isPresented.toggle()
         }
     }
