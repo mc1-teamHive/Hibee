@@ -15,9 +15,9 @@ struct Boss{
 struct BossView: View {
     let boss = Boss()
     var body: some View {
-        Image(uiImage: UIImage(named: "Issac_1.png")!)
-            .frame(height: 230)
-            .padding(.bottom, -50)
+        Image("Issac_1").resizable()
+            .frame(width: 500, height: 500)
+//            .padding(.bottom, -50)
     }
 }
 

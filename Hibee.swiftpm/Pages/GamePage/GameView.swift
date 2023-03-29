@@ -11,12 +11,15 @@ struct GameView: View {
     var body: some View {
         VStack{
             // Spacer for dont ignore safearea
+            
             Spacer().frame(height: 1)
             TopPanelView()
-            Spacer()
+            ProgressBar()
+       
             BossView()
+    
             CardFlipView()
-            // PopUpView()
+            
         }
         // need swap bkg when round changes
         .background(

@@ -15,7 +15,7 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
 }
  
 
-struct ContentView: View {
+struct ProgressBar: View {
     
     @State private var healthPoint : Double = 100.0
     @State private var progressViewColor : Color = .green
@@ -25,7 +25,7 @@ struct ContentView: View {
             ProgressView("HP", value: healthPoint, total: 100)
                 .progressViewStyle(RoundedRectProgressViewStyle())
                 .foregroundColor(progressViewColor)
-            Button("문제 맞추면...") {
+            Button {
                 if healthPoint > 0 {
                     healthPoint -= 20
                 }
@@ -38,9 +38,13 @@ struct ContentView: View {
                 else if healthPoint < 70 {
                     progressViewColor = .yellow
                 }
+            } label: {
+                Text("Isaac")
+                    .font(.system(size: 30, weight: .bold)).foregroundColor(.white)
             }
+
         }
-        .padding()
+        
     }
 }
 
