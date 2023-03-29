@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct GameStats {
+struct PanelStats {
     let round: Int
     let totalRounds: Int
     let remainingLives: Int
 }
 
 struct TopPanelView: View {
-    let gameStats = GameStats(round: 1, totalRounds: 3, remainingLives: 3)
+    let gameStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)
     
     var body: some View {
         HStack {
@@ -15,7 +15,8 @@ struct TopPanelView: View {
                 Text("Round \(gameStats.round)/\(gameStats.totalRounds)")
                     .panelTextStyle()
                 Spacer().frame(width: 10)
-                HStack{Text("Life")
+                HStack{
+                    Text("Life")
                         .panelTextStyle()
                     Text(String(repeating: "♥️", count: gameStats.remainingLives))
                     .padding(.bottom, 10)}
@@ -30,8 +31,8 @@ struct TopPanelView: View {
 
 extension Text {
     func panelTextStyle() -> Text {
-        self.font(.headline)
-            .foregroundColor(Color(red: 74/255, green: 91/255, blue: 109/255))
+        self.font(.title)
+            .foregroundColor(Color(.white))
     }
 }
 
