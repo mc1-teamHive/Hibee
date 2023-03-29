@@ -17,7 +17,7 @@ let package = Package(
             name: "Hibee",
             targets: ["AppModule"],
             bundleIdentifier: "com.Hive.Hibee",
-            teamIdentifier: "DR54KKAU8Z",
+            teamIdentifier: "NG2NLR2Z86",
             displayVersion: "1.0",
             bundleVersion: "1",
             appIcon: .placeholder(icon: .earth),
