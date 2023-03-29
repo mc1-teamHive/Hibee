@@ -25,7 +25,8 @@ struct TopPanelView: View {
                     Text("Life")
                         .panelTextStyle()
                     Text(String(repeating: "♥️", count: gameStats.remainingLives))
-                    .padding(.bottom, 10)}
+                    .padding(.bottom, 10)
+                }
             }.frame(height: 20)
             .padding(.top, 30)
             .padding(.horizontal, 10)
