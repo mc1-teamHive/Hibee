@@ -9,7 +9,12 @@ import SwiftUI
 struct LandingPageView: View {
     @State private var isCardFlipViewActive = false
     var body: some View {
-        NavigationView {
+        NavigationView {ZStack {
+            Image("backgrounds_landing")
+                .resizable()
+                .scaledToFill()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
             VStack(spacing: 0) {
                 Spacer()
                 Button("Start") {
@@ -17,12 +22,12 @@ struct LandingPageView: View {
                     isCardFlipViewActive = true
                 }
                 .buttonStyle(GrayButton())
-                .padding(.bottom, 150)
+                .padding(.bottom, 70)
                 NavigationLink(destination: GameView(), isActive: $isCardFlipViewActive){
                     EmptyView()
                 }
-            }
-        }.navigationViewStyle(StackNavigationViewStyle())
+            }}}.navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 
@@ -31,7 +36,7 @@ struct GrayButton: ButtonStyle {
         configuration.label
             .padding([.leading, .trailing], 100)
             .padding([.top, .bottom], 20)
-            .font(.system(size: 25, weight: .bold))
+            .font(.system(size: 35, weight: .bold))
             .background(Color(red: 74/255, green: 92/255, blue: 109/255))
             .foregroundColor(.white)
             .clipShape(Capsule())
