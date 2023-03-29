@@ -12,6 +12,7 @@ struct RoundEndView: View {
     var body: some View {
         VStack{
             Spacer()
+                .frame(height: 100)
             Text("YOU WIN!")
                 .endingTextStyle()
             NavigationView {
@@ -23,7 +24,7 @@ struct RoundEndView: View {
                         // need reset games func
                     }
                     .buttonStyle(GrayButtonEndingStyle())
-                    .padding(.bottom, 150)
+                    .padding(.bottom, 100)
                     NavigationLink(destination: GameView(), isActive: $isButtonActive){
                         EmptyView()
                     }
@@ -31,14 +32,14 @@ struct RoundEndView: View {
             }.navigationViewStyle(StackNavigationViewStyle())
             Image(uiImage: UIImage(named: "ending.png")!)
             Spacer()
-            
+                .frame(height: 50)
         }
     }
 }
 
 extension Text {
     func endingTextStyle() -> Text {
-        self.font(.system(size: 50, weight: Font.Weight.bold))
+        self.font(.system(size: 80, weight: Font.Weight.bold))
     }
 }
 

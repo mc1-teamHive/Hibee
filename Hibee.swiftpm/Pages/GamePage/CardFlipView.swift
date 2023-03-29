@@ -16,7 +16,6 @@ struct CardFront: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(cardColors[num % cardColors.count])
                 .frame(width: width, height: height)
-                .shadow(color: .gray, radius: 2, x: 0, y: 0)
         }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
@@ -29,14 +28,11 @@ struct CardBack: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .stroke(.gray.opacity(0.7), lineWidth: 3)
                 .frame(width: width, height: height)
-            
             RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(.clear)
-            Image(uiImage: UIImage(named: "cards.png")!)
+            Image(uiImage: UIImage(named: "card.svg")!)
                 .frame(width: width, height: height)
-                .shadow(color: .gray, radius: 2, x: 0, y: 0)
         }.rotation3DEffect(Angle(degrees: degree), axis: (x: 0, y: 1, z: 0))
     }
 }
