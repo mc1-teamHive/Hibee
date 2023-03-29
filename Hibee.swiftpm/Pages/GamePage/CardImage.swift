@@ -44,7 +44,6 @@ struct CardImage: View {
                 withAnimation(.spring()){
                     isToggled = true
                 }
-                isToggled = true
             }
             .fullScreenCover(isPresented: self.$isToggled) {
                 ZStack {

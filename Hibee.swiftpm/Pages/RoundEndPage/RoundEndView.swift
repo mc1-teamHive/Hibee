@@ -29,7 +29,7 @@ struct RoundEndView: View {
                     }
                 }
             }.navigationViewStyle(StackNavigationViewStyle())
-            Image(uiImage: UIImage(named: "ending.png")!)
+            FaceAnimation()
             Spacer()
             
         }
@@ -56,3 +56,8 @@ struct GrayButtonEndingStyle: ButtonStyle {
     }
 }
 
+struct RoundEndView_Previews: PreviewProvider {
+    static var previews: some View {
+        RoundEndView()
+    }
+}
