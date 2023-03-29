@@ -1,3 +1,9 @@
+//
+//  GameView.swift
+//
+//
+//  Created by Ha Jong Myeong on 2023/03/26.
+//
 import SwiftUI
 
 struct PanelStats {

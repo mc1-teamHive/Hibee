@@ -4,13 +4,12 @@
 //
 //  Created by 235 on 2023/03/29.
 //
-
 import SwiftUI
 
 struct AnswerSheetView: View {
     let questionNum: Int
     @Binding var isCorrect: Bool
-    
+    @Binding var isPresented : Bool
     var body: some View {
         VStack {
             Text(isCorrect ? "정답입니다" : "오답입니다.")
@@ -22,10 +21,11 @@ struct AnswerSheetView: View {
                 .frame(maxWidth: .infinity, maxHeight: 200)
                 .lineLimit(5)
             Spacer()
-            Image(isCorrect ? "Caesar" : "Wrongperson")
+            Image(isCorrect ? "wrong_caesar" : "wrong_steve")
                 .resizable()
-            .frame(width: 400, height: 400)}.frame(width: 964, height: 864).onTapGesture {
-                isPresented.toggle()
+                .frame(width: 400, height: 400)
+        }.frame(width: 964, height: 864).onTapGesture {
+            isPresented.toggle()
         }
     }
 }
