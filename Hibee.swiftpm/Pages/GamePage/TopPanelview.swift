@@ -38,8 +38,9 @@ struct TopPanelView: View {
 
 extension Text {
     func panelTextStyle() -> Text {
-        self.font(.title)
+        self.font(.system(size: 30))
             .foregroundColor(Color(.white))
+            .fontWeight(.heavy)
     }
 }
 
