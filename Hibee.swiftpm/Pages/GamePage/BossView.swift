@@ -17,7 +17,7 @@ struct BossView: View {
     var body: some View {
         Image(uiImage: UIImage(named: "Issac_1.png")!)
             .frame(height: 230)
-            .padding(.bottom, 50)
+            .padding(.bottom, -50)
     }
 }
 

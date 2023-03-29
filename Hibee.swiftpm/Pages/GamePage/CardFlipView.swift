@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CardFlipView: View {
+    private let nCardsInPack = 10
     @State private var degrees: [Double] = [-40, -30, -25, -15, -5, 5, 15, 25, 30, 40].map { $0 }
-    @State private var yLocation: [Double] = [100, 100, 80, 60, 50, 50, 60, 80, 100, 120]
-    @State private var xLocation: [Double] = [60, 50, 40, 30, 0, 0, -20, -40, -60, -80]
+    @State private var yLocation: [Double] = [80, 50, 20, -8, -25, -25, -8, 20, 50, 80]
+    @State private var xLocation: [Double] = [270, 190, 120, 70, 10, -30, -70, -100, -160, -230]
     @State private var offsets: [CGSize] = Array(repeating: .zero, count: 10)
     @State private var isToggle: [Bool] = Array(repeating: false, count: 10)
     private let cardWidth: CGFloat = 215
@@ -33,7 +34,7 @@ struct CardFlipView: View {
         .onAppear {
             for index in offsets.indices {
                 let offset = index - 4
-                offsets[index] = CGSize(width: CGFloat(offset) * -30, height: CGFloat(offset * offset * 10))
+                offsets[index] = CGSize(width: CGFloat(offset) * -40, height: CGFloat(offset * offset * 5))
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isShowingCards = true
