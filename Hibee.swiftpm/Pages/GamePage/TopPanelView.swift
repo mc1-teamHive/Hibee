@@ -1,5 +1,4 @@
-//
-//  GameView.swift
+//  TopPanelView.swift
 //
 //
 //  Created by Ha Jong Myeong on 2023/03/26.
@@ -13,7 +12,11 @@ struct PanelStats {
 }
 
 struct TopPanelView: View {
-    let gameStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)
+    let gameStats: PanelStats
+    
+    init(gameStats: PanelStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)) {
+        self.gameStats = gameStats
+    }
     
     var body: some View {
         HStack {
@@ -21,16 +24,16 @@ struct TopPanelView: View {
                 Text("Round \(gameStats.round)/\(gameStats.totalRounds)")
                     .panelTextStyle()
                 Spacer().frame(width: 10)
-                HStack{
+                HStack {
                     Text("Life")
                         .panelTextStyle()
                     Text(String(repeating: "♥️", count: gameStats.remainingLives))
-                    .padding(.bottom, 10)
+                        .padding(.bottom, 10)
                 }
-            }.frame(height: 20)
+            }
+            .frame(height: 20)
             .padding(.top, 30)
             .padding(.horizontal, 10)
-            
             Spacer()
         }
     }
