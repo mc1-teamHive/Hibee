@@ -18,7 +18,6 @@ struct LandingPageView: View {
                 }
                 .buttonStyle(GrayButton())
                 .padding(.bottom, 150)
-
                 NavigationLink(destination: GameView(), isActive: $isCardFlipViewActive){
                     EmptyView()
                 }
@@ -32,6 +31,7 @@ struct GrayButton: ButtonStyle {
         configuration.label
             .padding([.leading, .trailing], 100)
             .padding([.top, .bottom], 20)
+            .font(.system(size: 25, weight: .bold))
             .background(Color(red: 74/255, green: 92/255, blue: 109/255))
             .foregroundColor(.white)
             .clipShape(Capsule())
