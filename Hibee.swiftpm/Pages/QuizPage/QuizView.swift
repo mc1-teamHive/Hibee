@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct QuizView: View {
-    @Binding var cardFlip: Bool
+
     @State var round: Int = 1
     @State private var isAnswer = false
     @State private var btnclick = false
@@ -9,39 +9,29 @@ struct QuizView: View {
     let randomInt = Int.random(in: 0..<quizzes.count)
 
     var body: some View {
-        HStack() {
-            VStack() {
-                Button(action: {
-                    self.cardFlip.toggle()
-                }) {
-                    Image(systemName: "xmark.circle").resizable().frame(width: 40, height: 40).foregroundColor(.red).padding()
-                }
-                Spacer()
-            }
+        GeometryReader {
+            geo in
+            HStack() {
 
-            ZStack {
-                RoundedRectangle(cornerRadius: 30).fill(Color.white).frame(width: 450, height: 550)
-                VStack {
-                    Image("Honey").resizable().frame(width: 450, height: 450)
-                    Text("Round\(round)").foregroundColor(.gray)
-                    Text("\(quizzes[randomInt].question)").font(.system(size: 40, weight: .semibold, design: .serif)).frame(width: 400, height: 70).minimumScaleFactor(0.5)
-                }
 
-            }.frame(alignment: .leading)
+                Image("Quiz1").resizable().frame(width: 536, height: 750).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 80))
 
-            VStack(spacing: 20) {
-                ForEach(1...3, id: \.self) { index in
-                    Button(action: {
-                        checkAnswer(index: index)
-                    }) {
-                        RoundedRectangle(cornerRadius: 100)
-                            .fill(Color.black.opacity(0.5))
-                            .frame(width: 400, height: 100)
-                            .overlay(Text("\(quizzes[randomInt].options[index-1])"))
+                VStack(spacing: 72) {
+                    ForEach(1...3, id: \.self) { index in
+                        Button(action: {
+                            checkAnswer(index: index)
+                        }) {
+                            RoundedRectangle(cornerRadius: 100)
+                                .fill(Color.white)
+                                .frame(width: 548 , height: 120)
+                                .overlay(Text("\(quizzes[randomInt].options[index-1])").font(.system(size: 30, weight: .bold)).foregroundColor(.black))
+                        }
                     }
                 }
-            }
-        }.sheet(isPresented: $btnclick) {
+            }.frame(width: geo.size.width, height:  geo.size.height)
+            
+        }
+        .sheet(isPresented: $btnclick) {
             AnswerSheetView(questionNum: randomInt, isCorrect: $isAnswer)
         }
     }
@@ -55,3 +45,4 @@ struct QuizView: View {
         btnclick = true
     }
 }
+

@@ -49,7 +49,7 @@ struct CardImage: View {
             .fullScreenCover(isPresented: self.$isToggled) {
                 ZStack {
                     VStack {
-                        QuizView(cardFlip: $isToggled)
+                        QuizView()
                             .rotation3DEffect(
                                 .degrees(degrees),
                                 axis: (x: 0, y: 1, z: 0),
@@ -81,7 +81,7 @@ struct BackgroundBlurView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> some UIView {
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterialDark))
         DispatchQueue.main.async {
             view.superview?.superview?.backgroundColor = .clear
         }

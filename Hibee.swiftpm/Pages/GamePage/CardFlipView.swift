@@ -122,6 +122,7 @@ struct CardFlipView: View {
     @State private var isShowingCards = false
     
     var body: some View {
+        
         HStack(spacing: 0) {
             ForEach(degrees.indices, id: \.self) { index in
                 CardImage(width: cardWidth, height: cardHeight, degree: $degrees[index], offset: $offsets[index], isToggled: $isToggle[index])
@@ -140,15 +141,8 @@ struct CardFlipView: View {
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isShowingCards = true
-            }
-        }
-
-    }
-}
-
-struct CardFlipView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardFlipView()
-
-    }
+                
+            }}}
+    
+   
 }
