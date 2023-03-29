@@ -77,7 +77,7 @@ struct CardFlipView: View {
                 }.fullScreenCover(isPresented: self.$cardFlip) {
                     ZStack {
                         VStack {
-                            QuizView(cardFlip: $cardFlip)
+                            QuizView()
                                 .rotation3DEffect(
                                     .degrees(degrees),
                                     axis: (x: 0, y: 1, z: 0),
@@ -100,7 +100,7 @@ struct CardFlipView: View {
     
     struct BackgroundBlurView: UIViewRepresentable {
         func makeUIView(context: Context) -> some UIView {
-            let view = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+            let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterialDark))
             DispatchQueue.main.async {
                 view.superview?.superview?.backgroundColor = .clear
             }
