@@ -14,7 +14,7 @@ struct QuizView: View {
             HStack() {
 
 
-                Image("Quiz1").resizable().frame(width: 536, height: 750).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 80))
+                Image("\(randomInt)").resizable().frame(width: 536, height: 750).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 80))
 
                 VStack(spacing: 72) {
                     ForEach(1...3, id: \.self) { index in
