@@ -22,7 +22,7 @@ struct AnswerSheetView: View {
                 .frame(maxWidth: .infinity, maxHeight: 200)
                 .lineLimit(5)
             Spacer()
-            Image(isCorrect ? "Caesar" : "Wrongperson")
+            Image(isCorrect ? "Rightperson" : "Wrongperson")
                 .resizable()
                 .frame(width: 400, height: 400)
         }
