@@ -8,7 +8,7 @@ let bosses = [
     Boss(name: "Gommin", maxHealth: 110, currentHealth: 110),
     Boss(name : "Tim", maxHealth: 140, currentHealth: 140)
 ]
-let quizzes = [
+var quizzes = [
     Quiz(options: ["팀하이브", "팀 하지메", "팀 하부장"], answer: 0, description: "우리팀 이름은 하이브로 6각형..6명.. 아.. 여기서 꿀빨자라는 모토입니당🐝."),
     Quiz(options: ["윈드서핑", "웹서핑", "카이트 서핑"], answer: 1, description: "웃으신 분들 공범입니다."),
     Quiz(options: ["리라", "대금", "피아노"], answer: 0, description: "this is AZ개그"),

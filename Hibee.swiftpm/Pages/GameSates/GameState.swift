@@ -10,6 +10,8 @@ class GameState: ObservableObject {
     @Published var howmanyattack = 1
     @Published var isGameWon: Bool = false
     @Published var currentBossIndex: Int = 0
+    @Published var answerarr : Array = [Int]() //중복문제 제거하기 위해서!
+    @Published var randnum : Int = 0 
     let totalBosses: Int
     init(bossHealth: Double, remainingLives: Int, progressViewColor: Color = .green, totalBosses: Int = 3) {
         self.bossHealth = bossHealth
@@ -25,7 +27,6 @@ class GameState: ObservableObject {
     
         
     }
-    
     func decreaseBossHealth() {
         bossHealth -= 30
         howmanyattack += 1

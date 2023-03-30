@@ -13,9 +13,10 @@ struct AnswerSheetView: View {
     @EnvironmentObject var gameState : GameState
     @Binding var isCorrect: Bool
     @Binding var isPresented : Bool
-
+    
     var body: some View {
-        if(gameState.remainingLives == 0 ){
+        if(gameState.remainingLives == 1 ){
+            
             VStack{
                 Text("핫도그 타임")
                     .font(.system(size: 80, weight: .bold))
@@ -35,7 +36,7 @@ struct AnswerSheetView: View {
                 .onTapGesture {
                     isPresented.toggle()
                 }
-  
+            
             }
         else{
             VStack {
@@ -59,6 +60,7 @@ struct AnswerSheetView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }}
+    
 }
 
 struct AnswerSheetView_Previews: PreviewProvider {

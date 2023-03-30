@@ -14,6 +14,9 @@ struct GameView: View {
             RoundEndView()
            
         }
+        else if gameState.isGameWon{
+                    EndingView()
+                }
         else {
             VStack{
                 // Spacer for dont ignore safearea

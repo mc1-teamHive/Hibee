@@ -19,7 +19,7 @@ struct EndingView: View {
                 .padding(.top,50)
             FaceAnimation()
             Spacer()
-        }
+        }.background(Image("blurback").resizable().scaledToFit().frame(maxWidth: .infinity, maxHeight: .infinity).edgesIgnoringSafeArea(.all))
     }
 }
 

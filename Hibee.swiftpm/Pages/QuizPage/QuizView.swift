@@ -6,18 +6,20 @@ struct QuizView: View {
     @State private var isAnswer = false
     @State private var btnclick = false
     @Binding var isPresented : Bool
-    let randomInt = Int.random(in: 0..<quizzes.count)
-
+    @State private var randnum = 0
     var body: some View {
+        let randomInt = random(except: gameState.answerarr)
+        
         GeometryReader { geo in
             HStack() {
+                
                 if !btnclick {
                     Image("\(randomInt)").resizable().frame(width: 536, height: 750).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 80))
 
                     VStack(spacing: 72) {
                         ForEach(1...3, id: \.self) { index in
                             Button {
-                                checkAnswer(index: index)
+                                checkAnswer(index: index, questnum : randomInt)
                             } label: {
                                 RoundedRectangle(cornerRadius: 100)
                                     .fill(Color.white)
@@ -27,29 +29,31 @@ struct QuizView: View {
                         }
                     }
                 } else {
-                        AnswerSheetView(questionNum: randomInt, isCorrect: $isAnswer, isPresented: $btnclick)
+                    AnswerSheetView(questionNum: gameState.randnum, isCorrect: $isAnswer, isPresented: $btnclick)
                 }
             }.frame(width: geo.size.width, height: geo.size.height)
         }
     }
 
-    private func checkAnswer(index: Int) {
-        if quizzes[randomInt].answer == index-1 {
+    private func checkAnswer(index: Int, questnum : Int) {
+        if quizzes[questnum].answer == index-1 {
             isAnswer = true
             gameState.decreaseBossHealth()
         } else {
             isAnswer = false
+           
             gameState.decreaseLives()
         }
+        gameState.randnum = questnum
+        gameState.answerarr.append(questnum)
         btnclick = true
     }
+    private func random(except: [Int]) -> Int {
+        var result = Int.random(in: 0..<quizzes.count)
+        while except.contains(result) {
+            result = Int.random(in: 0..<quizzes.count)
+        }
+        return result
+    }
 }
-
-//
-//struct QuizView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QuizView(isPresented: .constant(true))
-//
-//    }
-//}
 
