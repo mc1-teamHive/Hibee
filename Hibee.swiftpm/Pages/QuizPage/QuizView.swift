@@ -27,7 +27,7 @@ struct QuizView: View {
                         }
                     }
                 } else {
-                    AnswerSheetView(questionNum: randomInt, isCorrect: $isAnswer, isPresented: $btnclick)
+                        AnswerSheetView(questionNum: randomInt, isCorrect: $isAnswer, isPresented: $btnclick)
                 }
             }.frame(width: geo.size.width, height: geo.size.height)
         }

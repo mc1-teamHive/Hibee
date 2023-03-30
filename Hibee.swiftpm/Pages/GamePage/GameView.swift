@@ -13,7 +13,8 @@ struct GameView: View {
         if gameState.isRoundEnd {
             RoundEndView()
            
-        } else {
+        }
+        else {
             VStack{
                 // Spacer for dont ignore safearea
                 Spacer().frame(height: 1)

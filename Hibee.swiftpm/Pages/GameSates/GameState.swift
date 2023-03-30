@@ -6,6 +6,7 @@ class GameState: ObservableObject {
     @Published var remainingLives: Int
     @Published var progressViewColor: Color
     @Published var isRoundEnd: Bool = false
+    @Published var isHotdogtime = false
     @Published var isGameWon: Bool = false
     @Published var currentBossIndex: Int = 0
     let totalBosses: Int
@@ -35,7 +36,9 @@ class GameState: ObservableObject {
         }
     }
 
-
+    func increaseLives(){
+        remainingLives += 1
+    }
     func resetLives() {
         remainingLives = 3
     }
