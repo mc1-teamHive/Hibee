@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct QuizView: View {
-
+    @EnvironmentObject var gameState : GameState
     @State var round: Int = 1
     @State private var isAnswer = false
     @State private var btnclick = false
@@ -12,8 +12,6 @@ struct QuizView: View {
         GeometryReader {
             geo in
             HStack() {
-
-
                 Image("\(randomInt)").resizable().frame(width: 536, height: 750).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 80))
 
                 VStack(spacing: 72) {
@@ -42,8 +40,10 @@ struct QuizView: View {
     private func checkAnswer(index: Int) {
         if quizzes[randomInt].answer == index-1 {
             isAnswer = true
+            gameState.decreaseBossHealth()
         } else {
             isAnswer = false
+            gameState.decreaseLives()
         }
         btnclick = true
     }

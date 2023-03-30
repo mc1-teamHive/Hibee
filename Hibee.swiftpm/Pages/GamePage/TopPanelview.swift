@@ -7,8 +7,12 @@ struct PanelStats {
 }
 
 struct TopPanelView: View {
-    let gameStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)
+    @EnvironmentObject var gameState: GameState
+    let gameStats: PanelStats
     
+    init(gameStats: PanelStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)) {
+        self.gameStats = gameStats
+    }
     var body: some View {
         HStack {
             VStack {
@@ -31,7 +35,7 @@ struct TopPanelView: View {
 
 extension Text {
     func panelTextStyle() -> Text {
-        self.font(.title)
+        self.font(.system(size: 30, weight: .heavy))
             .foregroundColor(Color(.white))
     }
 }
