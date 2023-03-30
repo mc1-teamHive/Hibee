@@ -7,6 +7,7 @@ class GameState: ObservableObject {
     @Published var progressViewColor: Color
     @Published var isRoundEnd: Bool = false
     @Published var isHotdogtime = false
+    @Published var howmanyattack = 1
     @Published var isGameWon: Bool = false
     @Published var currentBossIndex: Int = 0
     let totalBosses: Int
@@ -18,6 +19,7 @@ class GameState: ObservableObject {
     }
 
     func moveToNextBoss() {
+        howmanyattack = 1
         currentBossIndex += 1
         self.bossHealth = bosses[self.currentBossIndex].maxHealth
     
@@ -26,6 +28,7 @@ class GameState: ObservableObject {
     
     func decreaseBossHealth() {
         bossHealth -= 30
+        howmanyattack += 1
         updateProgressViewColor()
         if bossHealth <= 0 {
             if currentBossIndex == totalBosses - 1 {
