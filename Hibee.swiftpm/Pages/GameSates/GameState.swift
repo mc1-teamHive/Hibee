@@ -21,7 +21,7 @@ class GameState: ObservableObject {
     }
     
     func decreaseBossHealth() {
-        bossHealth -= 20
+        bossHealth -= 30
         updateProgressViewColor()
         if bossHealth <= 0 {
             if currentBossIndex == totalBosses - 1 {

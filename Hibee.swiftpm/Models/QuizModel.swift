@@ -1,8 +1,8 @@
-struct Quiz {
-    let options: [String]
-    let answer: Int
-    let description: String
-}
+//struct Quiz {
+//    let options: [String]
+//    let answer: Int
+//    let description: String
+//}
 
 let quizzes = [
     Quiz(options: ["팀하이브", "팀 하지메", "팀 하부장"], answer: 0, description: "우리팀 이름은 하이브로 6각형..6명.. 아.. 여기서 꿀빨자라는 모토입니당🐝."),

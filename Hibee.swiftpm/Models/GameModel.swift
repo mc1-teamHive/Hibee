@@ -10,15 +10,14 @@ import Foundation
 // MARK: - Structs
 
 // Quiz Model
-struct QuizModel {
-    let question: String
+struct Quiz {
     let options: [String]
     let answer: Int
     let description: String
 }
 
 // Boss Model
-struct BossModel {
+struct Boss {
     let name: String
     let maxHealth: Int
     var currentHealth: Int
@@ -45,23 +44,23 @@ struct GameStats {
 // MARK: - Game Model
 
 class GameModel {
-    private(set) var quizzes: [QuizModel]
-    private(set) var bosses: [BossModel]
+    private(set) var quizzes: [Quiz]
+    private(set) var bosses: [Boss]
     private(set) var gameStats: GameStats
     private(set) var currentIndex: Int
     
-    init(quizzes: [QuizModel], bosses: [BossModel], gameStats: GameStats) {
+    init(quizzes: [Quiz], bosses: [Boss], gameStats: GameStats) {
         self.quizzes = quizzes
         self.bosses = bosses
         self.gameStats = gameStats
         self.currentIndex = 0
     }
     
-    func getCurrentQuiz() -> QuizModel {
+    func getCurrentQuiz() -> Quiz {
         return quizzes[currentIndex]
     }
     
-    func getCurrentBoss() -> BossModel {
+    func getCurrentBoss() -> Boss {
         return bosses[currentIndex]
     }
     

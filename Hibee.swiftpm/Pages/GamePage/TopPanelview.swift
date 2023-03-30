@@ -3,14 +3,13 @@ import SwiftUI
 struct PanelStats {
     let round: Int
     let totalRounds: Int
-    let remainingLives: Int
 }
 
 struct TopPanelView: View {
     @EnvironmentObject var gameState: GameState
     let gameStats: PanelStats
     
-    init(gameStats: PanelStats = PanelStats(round: 1, totalRounds: 3, remainingLives: 3)) {
+    init(gameStats: PanelStats = PanelStats(round: 1, totalRounds: 3)) {
         self.gameStats = gameStats
     }
     var body: some View {
@@ -22,7 +21,7 @@ struct TopPanelView: View {
                 HStack{
                     Text("Life")
                         .panelTextStyle()
-                    Text(String(repeating: "♥️", count: gameStats.remainingLives))
+                    Text(String(repeating: "♥️", count: gameState.remainingLives))
                     .padding(.bottom, 10)}
             }.frame(height: 20)
             .padding(.top, 30)
