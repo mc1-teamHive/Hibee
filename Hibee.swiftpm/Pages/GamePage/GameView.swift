@@ -13,6 +13,8 @@ struct GameView: View {
         if gameState.isRoundEnd {
             RoundEndView()
            
+        }else if gameState.isGameWon{
+            EndingView()
         }
         else {
             VStack{
