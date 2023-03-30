@@ -3,7 +3,6 @@ import SwiftUI
 
 struct QuizView: View {
     @EnvironmentObject var gameState : GameState
-    @State var round: Int = 1
     @State private var isAnswer = false
     @State private var btnclick = false
     @Binding var isPresented : Bool

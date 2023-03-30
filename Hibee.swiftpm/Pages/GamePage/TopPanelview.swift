@@ -1,28 +1,23 @@
 import SwiftUI
 
-struct PanelStats {
-    let round: Int
-    let totalRounds: Int
-}
+
 
 struct TopPanelView: View {
     @EnvironmentObject var gameState: GameState
-    let gameStats: PanelStats
+ 
     
-    init(gameStats: PanelStats = PanelStats(round: 1, totalRounds: 3)) {
-        self.gameStats = gameStats
-    }
+  
     var body: some View {
         HStack {
             VStack {
-                Text("Round \(gameStats.round)/\(gameStats.totalRounds)")
+                Text("Round \(gameState.currentBossIndex+1)/3")
                     .panelTextStyle()
                     .multilineTextAlignment(.leading)
                 Spacer().frame(width: 10)
                 HStack{
                     Text("Life")
                         .panelTextStyle()
-                    ForEach(0..<3) { _ in
+                    ForEach(0..<gameState.remainingLives, id: \.self ) { _ in
                         Image("Heart")
                             .resizable()
                             .scaledToFit()
