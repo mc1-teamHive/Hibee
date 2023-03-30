@@ -14,6 +14,7 @@ struct CardImage: View {
     @Binding var degree: Double
     @Binding var offset: CGSize
     @Binding var isToggled: Bool
+    @State var isTouched : Bool = false
     @State private var degrees: Double = 0
     var body: some View {
         ZStack {
@@ -44,12 +45,12 @@ struct CardImage: View {
                 withAnimation(.spring()){
                     isToggled = true
                 }
-                isToggled = true
+                isTouched = true
             }
-            .fullScreenCover(isPresented: self.$isToggled) {
+            .fullScreenCover(isPresented: self.$isTouched) {
                 ZStack {
                     VStack {
-                        QuizView(isPresented: self.$isToggled)
+                        QuizView(isPresented: self.$isTouched)
                             .rotation3DEffect(
                                 .degrees(degrees),
                                 axis: (x: 0, y: 1, z: 0),
@@ -65,6 +66,7 @@ struct CardImage: View {
                 }.background(BackgroundBlurView().ignoresSafeArea())
 
             }
+        
     }
 }
 
