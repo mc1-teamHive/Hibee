@@ -7,27 +7,45 @@
 import SwiftUI
 
 struct LandingPageView: View {
+    @State private var clickCount = 0
     @State private var isCardFlipViewActive = false
+    @State private var showStoryView = false
+    
     var body: some View {
-        NavigationView {ZStack {
-            Image("backgrounds_landing")
-                .resizable()
-                .scaledToFill()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
-            VStack(spacing: 0) {
-                Spacer()
-                Button("Start") {
-                    // action when press buttons
-                    isCardFlipViewActive = true
+        NavigationView {
+            ZStack {
+                Image("backgrounds_landing")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
+                VStack(spacing: 0) {
+                    Spacer()
+                    Button("Start") {
+                        clickCount += 1
+                        if clickCount == 1 {
+                            showStoryView = true
+                        }else if clickCount == 2 {
+                            isCardFlipViewActive = true
+                        }
+                    }
+                    .buttonStyle(GrayButton())
+                    .padding(.bottom, 50)
+                    NavigationLink(destination: GameView(), isActive: $isCardFlipViewActive) {
+                        EmptyView()
+                    }
                 }
-                .buttonStyle(GrayButton())
-                .padding(.bottom, 50)
-                NavigationLink(destination: GameView(), isActive: $isCardFlipViewActive){
-                    EmptyView()
-                }
-            }}}.navigationViewStyle(StackNavigationViewStyle())
-        
+            }
+            .fullScreenCover(isPresented: $showStoryView, content: {
+                StoryView(introName: round[0].title, finalText: round[0].notion)
+            })
+//            .background(
+//                NavigationLink(destination: GameView(), isActive: $isCardFlipViewActive) {
+//                    EmptyView()
+//                }
+//            )
+//
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

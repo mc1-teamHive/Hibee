@@ -3,7 +3,9 @@
 // Created by Hibee on 2023/03/25.
 
 import SwiftUI
+
 struct CardFlipView: View {
+    @EnvironmentObject var gameState: GameState
     private let nCardsInPack = 10
     @State private var degrees: [Double] = [-40, -30, -25, -15, -5, 5, 15, 25, 30, 40].map { $0 }
     @State private var yLocation: [Double] = [20, -10, -40, -78, -85, -85, -78, -40, -10, 20]
@@ -12,7 +14,7 @@ struct CardFlipView: View {
     @State private var isToggle: [Bool] = Array(repeating: false, count: 10)
     private let cardWidth: CGFloat = 215
     private let cardHeight: CGFloat = 300
-    
+    @State private var isShowingStoryView = false
     @State private var isShowingCards = false
     
     var body: some View {
@@ -35,8 +37,14 @@ struct CardFlipView: View {
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isShowingCards = true
-                
-            }}}
+                isShowingStoryView = true
+            }
+            
+        }
+        .fullScreenCover(isPresented: $isShowingStoryView) {
+            StoryView(introName: round[gameState.currentBossIndex + 1].title, finalText: round[gameState.currentBossIndex + 1].notion)
+        }
+    }
     
-   
+    
 }
