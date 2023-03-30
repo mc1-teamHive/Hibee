@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AnswerSheetView: View {
+    @Environment(\.presentationMode) var presentationMode
     let questionNum: Int
     @EnvironmentObject var gameState : GameState
     @Binding var isCorrect: Bool
@@ -55,7 +56,7 @@ struct AnswerSheetView: View {
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 40.0, style: .continuous))
             .onTapGesture {
-                isPresented.toggle()
+                self.presentationMode.wrappedValue.dismiss()
             }
         }}
 }
