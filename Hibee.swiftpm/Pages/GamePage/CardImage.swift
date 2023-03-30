@@ -63,8 +63,8 @@ struct CardImage: View {
                                 }
                             }
                     }
-                }.background(BackgroundBlurView().ignoresSafeArea())
-
+                }
+                .background(BackgroundBlurView(isTouched: self.$isTouched).ignoresSafeArea())
             }
         
     }
@@ -78,14 +78,32 @@ struct CardImage_Previews: PreviewProvider {
 }
 
 struct BackgroundBlurView: UIViewRepresentable {
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
-    }
+    @Binding var isTouched: Bool
     
-    func makeUIView(context: Context) -> some UIView {
+    func makeUIView(context: Context) -> UIVisualEffectView {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterialDark))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.dismiss)))
         DispatchQueue.main.async {
             view.superview?.superview?.backgroundColor = .clear
         }
         return view
-    }}
+    }
+    
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    final class Coordinator: NSObject {
+        var parent: BackgroundBlurView
+        
+        init(_ parent: BackgroundBlurView) {
+            self.parent = parent
+        }
+        
+        @objc func dismiss() {
+            parent.isTouched = false
+        }
+    }
+}

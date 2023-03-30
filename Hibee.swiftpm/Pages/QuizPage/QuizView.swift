@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct QuizView: View {
     @EnvironmentObject var gameState : GameState
     @State var round: Int = 1
@@ -9,31 +10,27 @@ struct QuizView: View {
     let randomInt = Int.random(in: 0..<quizzes.count)
 
     var body: some View {
-        GeometryReader {
-            geo in
+        GeometryReader { geo in
             HStack() {
-                Image("\(randomInt)").resizable().frame(width: 536, height: 750).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 80))
+                if !btnclick {
+                    Image("\(randomInt)").resizable().frame(width: 536, height: 750).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 80))
 
-                VStack(spacing: 72) {
-                    ForEach(1...3, id: \.self) { index in
-                        Button(action: {
-                            checkAnswer(index: index)
-                        }) {
-                            RoundedRectangle(cornerRadius: 100)
-                                .fill(Color.white)
-                                .frame(width: 548 , height: 120)
-                                .overlay(Text("\(quizzes[randomInt].options[index-1])").font(.system(size: 30, weight: .bold)).foregroundColor(.black))
+                    VStack(spacing: 72) {
+                        ForEach(1...3, id: \.self) { index in
+                            Button {
+                                checkAnswer(index: index)
+                            } label: {
+                                RoundedRectangle(cornerRadius: 100)
+                                    .fill(Color.white)
+                                    .frame(width: 548 , height: 120)
+                                    .overlay(Text("\(quizzes[randomInt].options[index-1])").font(.system(size: 30, weight: .bold)).foregroundColor(.black))
+                            }
                         }
                     }
+                } else {
+                    AnswerSheetView(questionNum: randomInt, isCorrect: $isAnswer, isPresented: $btnclick)
                 }
-            }.frame(width: geo.size.width, height:  geo.size.height)
-            
-        }
-        .sheet(isPresented: $btnclick, onDismiss: {
-            isPresented.toggle()
-        }) {
-            
-            AnswerSheetView( questionNum: randomInt, isCorrect: $isAnswer, isPresented: $btnclick)
+            }.frame(width: geo.size.width, height: geo.size.height)
         }
     }
 
@@ -48,4 +45,12 @@ struct QuizView: View {
         btnclick = true
     }
 }
+
+//
+//struct QuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QuizView(isPresented: .constant(true))
+//
+//    }
+//}
 
