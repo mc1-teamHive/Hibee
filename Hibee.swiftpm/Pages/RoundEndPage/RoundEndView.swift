@@ -22,6 +22,7 @@ struct RoundEndView: View {
                         isButtonActive = true
                         gameState.resetLives()
                         gameState.moveToNextBoss()
+                        gameState.isRoundEnd = false
                     }
                     .buttonStyle(GrayButtonEndingStyle())
                     .padding(.top, 15)

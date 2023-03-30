@@ -5,19 +5,18 @@ import SwiftUI
 struct ProgressBar: View {
     @EnvironmentObject var gameState: GameState
     
-    @State private var healthPoint : Double = 100.0
-    @State private var progressViewColor : Color = .green
-    
+
+  
     var body: some View {
       
         VStack {                                    //총 HP
-            ProgressView("HP", value: gameState.bossHealth, total: 100)
+            ProgressView("HP", value: gameState.bossHealth, total: bosses[gameState.currentBossIndex].maxHealth)
                 .progressViewStyle(RoundedRectProgressViewStyle())
-                .foregroundColor(progressViewColor)
+                .foregroundColor(gameState.progressViewColor)
             Button {
                 gameState.decreaseBossHealth()
             } label: {
-                Text("Isaac")
+                Text("\(bosses[gameState.currentBossIndex].name)")
                     .font(.system(size: 30, weight: .bold)).foregroundColor(.white)
             }
 

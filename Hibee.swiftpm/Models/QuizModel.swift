@@ -3,7 +3,11 @@
 //    let answer: Int
 //    let description: String
 //}
-
+let bosses = [
+    Boss(name: "Isaac", maxHealth: 70, currentHealth: 70),
+    Boss(name: "Gommin", maxHealth: 110, currentHealth: 110),
+    Boss(name : "Tim", maxHealth: 140, currentHealth: 140)
+]
 let quizzes = [
     Quiz(options: ["팀하이브", "팀 하지메", "팀 하부장"], answer: 0, description: "우리팀 이름은 하이브로 6각형..6명.. 아.. 여기서 꿀빨자라는 모토입니당🐝."),
     Quiz(options: ["윈드서핑", "웹서핑", "카이트 서핑"], answer: 1, description: "웃으신 분들 공범입니다."),

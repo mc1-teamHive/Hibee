@@ -18,6 +18,9 @@ class GameState: ObservableObject {
 
     func moveToNextBoss() {
         currentBossIndex += 1
+        self.bossHealth = bosses[self.currentBossIndex].maxHealth
+    
+        
     }
     
     func decreaseBossHealth() {
@@ -42,7 +45,7 @@ class GameState: ObservableObject {
     }
 
     private func updateProgressViewColor() {
-        if bossHealth < 30 {
+        if bossHealth <=  30 {
             progressViewColor = .red
         } else if bossHealth < 50 {
             progressViewColor = .orange

@@ -10,6 +10,7 @@ import Foundation
 // MARK: - Structs
 
 // Quiz Model
+
 struct Quiz {
     let options: [String]
     let answer: Int
@@ -17,17 +18,18 @@ struct Quiz {
 }
 
 // Boss Model
+
 struct Boss {
     let name: String
-    let maxHealth: Int
+    let maxHealth: Double
     var currentHealth: Int
-    
-    mutating func takeDamage(_ damage: Int) {
-        currentHealth -= damage
-        if currentHealth < 0 {
-            currentHealth = 0
-        }
-    }
+//    
+//    mutating func takeDamage(_ damage: Int) {
+//        currentHealth -= damage
+//        if currentHealth < 0 {
+//            currentHealth = 0
+//        }
+//    }
     
     var isDefeated: Bool {
         return currentHealth == 0
@@ -64,19 +66,19 @@ class GameModel {
         return bosses[currentIndex]
     }
     
-    func answerQuiz(optionIndex: Int) -> Bool {
-        let isCorrect = quizzes[currentIndex].answer == optionIndex
-        
-        if !isCorrect {
-            gameStats.remainingLives -= 1
-        } else {
-            var currentBoss = bosses[currentIndex]
-            currentBoss.takeDamage(1)
-            bosses[currentIndex] = currentBoss
-        }
-        
-        return isCorrect
-    }
+//    func answerQuiz(optionIndex: Int) -> Bool {
+//        let isCorrect = quizzes[currentIndex].answer == optionIndex
+//        
+//        if !isCorrect {
+//            gameStats.remainingLives -= 1
+//        } else {
+//            var currentBoss = bosses[currentIndex]
+//            currentBoss.takeDamage(1)
+//            bosses[currentIndex] = currentBoss
+//        }
+//        
+//        return isCorrect
+//    }
     
     func moveToNextQuiz() -> Bool {
         if currentIndex < quizzes.count - 1 {
