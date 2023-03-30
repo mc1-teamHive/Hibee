@@ -48,11 +48,11 @@ class GameState: ObservableObject {
     }
 
     private func updateProgressViewColor() {
-        if bossHealth <=  30 {
+        if bossHealth <=  30 && bossHealth > 1 {
             progressViewColor = .red
-        } else if bossHealth < 50 {
+        } else if bossHealth < 50 && bossHealth > 1 {
             progressViewColor = .orange
-        } else if bossHealth < 70 {
+        } else if bossHealth < 70 && bossHealth > 1{
             progressViewColor = .yellow
         } else {
             progressViewColor = .green

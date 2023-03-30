@@ -16,7 +16,6 @@ struct RoundEndView: View {
             Text("YOU WIN!")
                 .endingTextStyle()
                 .padding(.top, 200)
-            NavigationView {
                 VStack(spacing: 0) {
                     Button("Go Next") {
                         isButtonActive = true
@@ -30,11 +29,11 @@ struct RoundEndView: View {
                         EmptyView()
                     }
                 }
-            }.navigationViewStyle(StackNavigationViewStyle())
+        
             FaceAnimation()
             Spacer()
             
-        }
+        }.background(Image("blurback").resizable().scaledToFit().frame(maxWidth: .infinity, maxHeight: .infinity).edgesIgnoringSafeArea(.all))
     }
 }
 

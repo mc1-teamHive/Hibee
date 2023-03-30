@@ -39,11 +39,11 @@ struct AnswerSheetView: View {
         else{
             VStack {
                 Text(isCorrect ? "정답입니다" : "오답입니다.")
-                    .font(.system(size: 80, weight: .bold))
+                    .font(.system(size: 90, weight: .heavy))
                     .padding(.top, 100)
                     .padding(.bottom, 50)
                 Text(quizzes[questionNum].description)
-                    .font(.system(size: 30, weight: .medium))
+                    .font(.system(size: 40, weight: .semibold))
                     .frame(maxWidth: .infinity, maxHeight: 200)
                     .lineLimit(5)
                 Spacer()
