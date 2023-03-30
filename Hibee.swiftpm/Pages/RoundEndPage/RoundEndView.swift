@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RoundEndView: View {
+    @EnvironmentObject var gameState: GameState
     @State private var isButtonActive = false
     var body: some View {
         VStack{
@@ -18,9 +19,9 @@ struct RoundEndView: View {
                 VStack(spacing: 0) {
                     Spacer()
                     Button("Go Next") {
-                        // action when press buttons
                         isButtonActive = true
-                        // need reset games func
+                        gameState.resetLives()
+                        gameState.moveToNextBoss()
                     }
                     .buttonStyle(GrayButtonEndingStyle())
                     .padding(.bottom, 150)
