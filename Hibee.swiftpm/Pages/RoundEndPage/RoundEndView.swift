@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct RoundEndView: View {
     @EnvironmentObject var gameState: GameState
     @State private var isButtonActive = false
