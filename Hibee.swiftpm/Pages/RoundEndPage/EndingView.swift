@@ -1,6 +1,6 @@
 //
 //  SwiftUIView.swift
-//  
+//
 //
 //  Created by Ha Jong Myeong on 2023/03/28.
 //
@@ -15,7 +15,7 @@ struct EndingView: View {
             .emojiTextStyle()
         Text("그대에게 주어지는 합격목걸이")
             .endingTextStyle()
-        Image(uiImage: UIImage(named: "ending.png")!)
+        FaceAnimation()
         Spacer()
     }
 }
