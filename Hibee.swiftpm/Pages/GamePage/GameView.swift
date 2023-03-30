@@ -12,7 +12,7 @@ struct GameView: View {
     var body: some View {
         if gameState.isRoundEnd {
             RoundEndView()
-           
+            
         }
         else {
             VStack{
@@ -23,6 +23,10 @@ struct GameView: View {
                 BossView()
                 CardFlipView()
             }.navigationBarBackButtonHidden(true)
-                .background(Image("backgrounds_1").resizable().scaledToFit().frame(maxWidth: .infinity, maxHeight: .infinity).edgesIgnoringSafeArea(.all))
-        }}
-}
+                .background(Image("background_\(gameState.currentBossIndex)").resizable().scaledToFit().frame(maxWidth: .infinity, maxHeight: .infinity).edgesIgnoringSafeArea(.all))
+            
+            
+        }
+        
+    }}
+

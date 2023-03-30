@@ -12,11 +12,11 @@ struct RoundEndView: View {
     @State private var isButtonActive = false
     var body: some View {
         VStack{
-//            Spacer()
+            //            Spacer()
             Text("YOU WIN!")
                 .endingTextStyle()
                 .padding(.top, 200)
-            NavigationView {
+//            NavigationView {
                 VStack(spacing: 0) {
                     Button("Go Next") {
                         isButtonActive = true
@@ -25,16 +25,17 @@ struct RoundEndView: View {
                         gameState.isRoundEnd = false
                     }
                     .buttonStyle(GrayButtonEndingStyle())
+            
                     .padding(.top, 15)
                     NavigationLink(destination: GameView(), isActive: $isButtonActive){
                         EmptyView()
                     }
                 }
-            }.navigationViewStyle(StackNavigationViewStyle())
+//            }.navigationViewStyle(StackNavigationViewStyle())
             FaceAnimation()
             Spacer()
             
-        }
+        }.background(Image("blurback").resizable().scaledToFit().frame(maxWidth: .infinity, maxHeight: .infinity).edgesIgnoringSafeArea(.all))
     }
 }
 

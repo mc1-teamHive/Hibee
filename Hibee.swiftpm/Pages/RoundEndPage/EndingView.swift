@@ -23,8 +23,3 @@ struct EndingView: View {
     }
 }
 
-struct EndingView_Previews: PreviewProvider {
-    static var previews: some View {
-        EndingView()
-    }
-}
