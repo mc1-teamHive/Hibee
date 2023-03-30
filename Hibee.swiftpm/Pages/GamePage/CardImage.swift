@@ -58,7 +58,7 @@ struct CardImage: View {
                                 withAnimation {
                                     self.degrees += 360
                                 }
-                            }
+                            }//dismiss when win a round
                     }
                 }.background(BackgroundBlurView().ignoresSafeArea())
 
