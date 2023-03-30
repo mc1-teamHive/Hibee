@@ -10,19 +10,16 @@ import SwiftUI
 struct EndingView: View {
     @State private var isButtonActive = false
     var body: some View {
-        Spacer()
-        Text("✌🏻")
-            .emojiTextStyle()
-        Text("그대에게 주어지는 합격목걸이")
-            .endingTextStyle()
-        FaceAnimation()
-        Spacer()
-    }
-}
-
-extension Text {
-    func emojiTextStyle() -> Text {
-        self.font(.largeTitle)
+        VStack {
+//            Spacer()
+            Image("victory")
+                .padding(.top,100)
+            Text("그대에게 주어지는 합격목걸이")
+                .font(.system(size: 80, weight: .bold))
+                .padding(.top,50)
+            FaceAnimation()
+            Spacer()
+        }
     }
 }
 

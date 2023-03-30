@@ -24,7 +24,6 @@ struct FaceAnimation: View {
                                     ) {
                                         isRotating = 30.0
                                     }
-                                    //
                                 }
                             }
                     }
@@ -53,5 +52,11 @@ struct FaceAnimation: View {
                 }.offset(x: 200)
             }
         }
+    }
+}
+
+struct FaceAnimation_Previews: PreviewProvider {
+    static var previews: some View {
+        FaceAnimation()
     }
 }

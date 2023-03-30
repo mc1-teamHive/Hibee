@@ -25,8 +25,18 @@ struct AnswerSheetView: View {
             Image(isCorrect ? "Caesar" : "Wrongperson")
                 .resizable()
                 .frame(width: 400, height: 400)
-        }.frame(width: 964, height: 864).onTapGesture {
+        }
+        .frame(width: 964, height: 864)
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 40.0, style: .continuous))
+        .onTapGesture {
             isPresented.toggle()
         }
+    }
+}
+
+struct AnswerSheetView_Previews: PreviewProvider {
+    static var previews: some View {
+        AnswerSheetView(questionNum: 1, isCorrect: .constant(true), isPresented: .constant(true))
     }
 }

@@ -12,19 +12,19 @@ struct RoundEndView: View {
     @State private var isButtonActive = false
     var body: some View {
         VStack{
-            Spacer()
+//            Spacer()
             Text("YOU WIN!")
                 .endingTextStyle()
+                .padding(.top, 200)
             NavigationView {
                 VStack(spacing: 0) {
-                    Spacer()
                     Button("Go Next") {
                         isButtonActive = true
                         gameState.resetLives()
                         gameState.moveToNextBoss()
                     }
                     .buttonStyle(GrayButtonEndingStyle())
-                    .padding(.bottom, 150)
+                    .padding(.top, 15)
                     NavigationLink(destination: GameView(), isActive: $isButtonActive){
                         EmptyView()
                     }
@@ -39,16 +39,16 @@ struct RoundEndView: View {
 
 extension Text {
     func endingTextStyle() -> Text {
-        self.font(.system(size: 50, weight: Font.Weight.bold))
+        self.font(.system(size: 100, weight: Font.Weight.bold))
     }
 }
 
 struct GrayButtonEndingStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(size: 50, weight: Font.Weight.bold))
-            .padding([.leading, .trailing], 150)
-            .padding([.top, .bottom], 40)
+            .font(.system(size: 30, weight: Font.Weight.bold))
+            .padding([.leading, .trailing], 100)
+            .padding([.top, .bottom], 20)
             .background(Color(red: 74/255, green: 92/255, blue: 109/255))
             .foregroundColor(.white)
             .clipShape(Capsule())
