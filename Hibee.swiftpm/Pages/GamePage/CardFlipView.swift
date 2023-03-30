@@ -112,7 +112,7 @@ import SwiftUI
 struct CardFlipView: View {
     private let nCardsInPack = 10
     @State private var degrees: [Double] = [-40, -30, -25, -15, -5, 5, 15, 25, 30, 40].map { $0 }
-    @State private var yLocation: [Double] = [80, 50, 20, -8, -25, -25, -8, 20, 50, 80]
+    @State private var yLocation: [Double] = [20, -10, -40, -78, -85, -85, -78, -40, -10, 20]
     @State private var xLocation: [Double] = [270, 190, 120, 70, 10, -30, -70, -100, -160, -230]
     @State private var offsets: [CGSize] = Array(repeating: .zero, count: 10)
     @State private var isToggle: [Bool] = Array(repeating: false, count: 10)

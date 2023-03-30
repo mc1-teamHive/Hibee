@@ -17,15 +17,24 @@ struct TopPanelView: View {
             VStack {
                 Text("Round \(gameStats.round)/\(gameStats.totalRounds)")
                     .panelTextStyle()
+                    .multilineTextAlignment(.leading)
                 Spacer().frame(width: 10)
                 HStack{
                     Text("Life")
                         .panelTextStyle()
-                    Text(String(repeating: "♥️", count: gameState.remainingLives))
-                    .padding(.bottom, 10)}
+                    ForEach(0..<3) { _ in
+                        Image("Heart")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 35,height: 35)
+                        
+                    }
+//                    Text(String(repeating: "♥️", count: gameState.remainingLives))
+//                    .padding(.bottom, 10)
+                }
             }.frame(height: 20)
-            .padding(.top, 30)
-            .padding(.horizontal, 10)
+                .padding(.top, 30)
+                .padding(.horizontal, 10)
             
             Spacer()
         }

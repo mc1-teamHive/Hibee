@@ -15,6 +15,7 @@ struct CardImage: View {
     @Binding var offset: CGSize
     @Binding var isToggled: Bool
     @State var isTouched : Bool = false
+    @State private var isCardClicked = false
     @State private var degrees: Double = 0
     var body: some View {
         ZStack {
@@ -42,10 +43,13 @@ struct CardImage: View {
         }.rotation3DEffect(Angle(degrees: -degree), axis: (x: 0, y: 0, z: -1))
             .offset(offset)
             .onTapGesture {
-                withAnimation(.spring()){
-                    isToggled = true
+                if !isCardClicked {
+                    withAnimation(.spring()){
+                        isToggled = true
+                    }
+                    isTouched = true
+                    isCardClicked = true
                 }
-                isTouched = true
             }
             .fullScreenCover(isPresented: self.$isTouched) {
                 ZStack {
