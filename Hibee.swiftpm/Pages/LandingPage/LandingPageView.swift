@@ -5,11 +5,12 @@
 //  Created by Ha Jong Myeong on 2023/03/26.
 //
 import SwiftUI
-
+import AVFoundation
 struct LandingPageView: View {
     @State private var clickCount = 0
     @State private var isCardFlipViewActive = false
     @State private var showStoryView = false
+    @State var player : AVAudioPlayer?
     
     var body: some View {
         NavigationView {
@@ -18,7 +19,16 @@ struct LandingPageView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .edgesIgnoringSafeArea(.all)
+                    .edgesIgnoringSafeArea(.all).onAppear{
+                        guard let path = Bundle.main.path(forResource: "Main", ofType: "mp3") else {return}
+                        let url = URL(fileURLWithPath: path)
+                        do{
+                            player = try AVAudioPlayer(contentsOf: url)
+                        }catch{
+                            print("error")
+                        }
+                        player?.play()
+                    }
                 VStack(spacing: 0) {
                     Spacer()
                     Button("Start") {
@@ -26,6 +36,8 @@ struct LandingPageView: View {
                         if clickCount == 1 {
                             showStoryView = true
                         }else if clickCount == 2 {
+                            player?.stop()
+
                             isCardFlipViewActive = true
                         }
                     }
