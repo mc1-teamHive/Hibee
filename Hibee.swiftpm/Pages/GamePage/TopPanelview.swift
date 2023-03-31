@@ -17,7 +17,7 @@ struct TopPanelView: View {
                 HStack{
                     Text("Life")
                         .panelTextStyle()
-                    ForEach(0..<gameState.remainingLives, id: \.self ) { _ in
+                    ForEach(0..<max(1, gameState.remainingLives), id: \.self ) { _ in
                         Image("Heart")
                             .resizable()
                             .scaledToFit()

@@ -13,14 +13,13 @@ struct AnswerSheetView: View {
     @EnvironmentObject var gameState : GameState
     @Binding var isCorrect: Bool
     @Binding var isPresented : Bool
-    let Text1 = "목숨이 하나 남으셨군요?"
+    let Text1 = "목숨이 없으시군요?"
     let Text2 = "저는 핫도그를 좋아하는 시저라고 합니다"
-    let Text3 = "문제를 맞추시면 "
     let Text4 = "목숨과도 같은 "
-    let Text5 = "핫도그를 드립니다"
+    let Text5 = "핫도그를 드릴게요"
 
     var body: some View {
-        if(gameState.remainingLives == 0 ){
+        if(gameState.remainingLives <= 0 && isCorrect == false ){
             VStack{
                 Text("핫도그 타임")
                     .font(.system(size: 80, weight: .bold))
@@ -29,7 +28,6 @@ struct AnswerSheetView: View {
                 Text(Text1).hotDogTextStyle().padding(.bottom, 1)
                 Text(Text2).hotDogTextStyle().padding(.bottom, 1)
                 HStack(alignment: .top, spacing: 0){
-                    Text(Text3).hotDogTextStyle()
                     Text(Text4).hotDogTextStyle2()
                     Text(Text5).hotDogTextStyle()
                 }
