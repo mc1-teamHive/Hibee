@@ -22,7 +22,8 @@ struct StoryView: View {
             Image(introName)
                 .offset(y: -400)
             Text(text)
-                .font(.custom(.oneMobilePop, size: 30))
+                .font(.custom(.oneMobilePop, size: 35))
+                .frame(maxWidth: 700, alignment: .center)
                 .foregroundColor(.brown)
                 .padding(.top, 50)
                 .foregroundColor(.white)
@@ -30,6 +31,7 @@ struct StoryView: View {
                         Animation.easeOut(duration: 1).delay(2),
                         value: text
                     )        }
+        .multilineTextAlignment(.center)
         .background(
             ZStack {
                 BackgroundBlurView(isTouched: self.$isTouched)
@@ -45,7 +47,7 @@ struct StoryView: View {
             presentationMode.wrappedValue.dismiss()
         }
         .onAppear {
-            let timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { timer in
+            let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
                 withAnimation {
                     if currentIndex < finalText.count {
                         text.append(finalText[finalText.index(finalText.startIndex, offsetBy: currentIndex)])

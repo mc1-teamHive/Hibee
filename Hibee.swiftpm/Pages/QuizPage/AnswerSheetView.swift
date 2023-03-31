@@ -13,21 +13,28 @@ struct AnswerSheetView: View {
     @EnvironmentObject var gameState : GameState
     @Binding var isCorrect: Bool
     @Binding var isPresented : Bool
-    
+    let Text1 = "목숨이 하나 남으셨군요?"
+    let Text2 = "저는 핫도그를 좋아하는 시저라고 합니다"
+    let Text3 = "문제를 맞추시면 "
+    let Text4 = "목숨과도 같은 "
+    let Text5 = "핫도그를 드립니다"
+
     var body: some View {
-        if(gameState.remainingLives == 1 ){
-            
+        if(gameState.remainingLives == 0 ){
             VStack{
                 Text("핫도그 타임")
                     .font(.system(size: 80, weight: .bold))
                     .padding(.top, 100)
-                    .padding(.bottom, 50)
-                Text("목숨이 하나 남으셨군요? 저는 핫도그를 좋아하는 시저라고 합니다 문제를 맞추시면 목숨과도 같은 핫도그를 드립니다")
-                    .font(.system(size: 30, weight: .medium))
-                    .frame(maxWidth: .infinity, maxHeight: 200)
-                    .lineLimit(3)
+                    .padding(.bottom, 30)
+                Text(Text1).hotDogTextStyle().padding(.bottom, 1)
+                Text(Text2).hotDogTextStyle().padding(.bottom, 1)
+                HStack(alignment: .top, spacing: 0){
+                    Text(Text3).hotDogTextStyle()
+                    Text(Text4).hotDogTextStyle2()
+                    Text(Text5).hotDogTextStyle()
+                }
                 Spacer()
-                Image("wrong_caesar")
+                Image("Caesar")
                     .resizable()
                 .frame(width: 400, height: 400)
             }.frame(width: 964, height: 864)
@@ -36,7 +43,7 @@ struct AnswerSheetView: View {
                 .onTapGesture {
                     isPresented.toggle()
                 }
-            
+
             }
         else{
             VStack {
@@ -60,7 +67,17 @@ struct AnswerSheetView: View {
                 self.presentationMode.wrappedValue.dismiss()
             }
         }}
-    
+}
+
+extension Text {
+    func hotDogTextStyle() -> Text {
+        self.font(.system(size: 30, weight: .medium))
+    }
+}
+extension Text {
+    func hotDogTextStyle2() -> Text {
+        self.font(.system(size: 30, weight: .bold))
+    }
 }
 
 struct AnswerSheetView_Previews: PreviewProvider {
