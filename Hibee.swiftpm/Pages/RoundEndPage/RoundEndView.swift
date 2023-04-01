@@ -19,7 +19,7 @@ struct RoundEndView: View {
                 VStack(spacing: 0) {
                     Button("Go Next") {
                         isButtonActive = true
-                        gameState.resetLives()
+//                        gameState.resetLives()
                         gameState.moveToNextBoss()
                         gameState.isRoundEnd = false
                     }
