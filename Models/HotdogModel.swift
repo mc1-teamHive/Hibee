@@ -1,3 +1,5 @@
+// Hotdog Model
+
 struct Hotdog {
     let options: [String]
     let answer: Int
@@ -13,7 +15,5 @@ let hotdogs = [
     Hotdog(options: ["인턴", "회장", "부장"], answer: 2, description: "하부장입니다."),
     Hotdog(options: ["잘", "처음", "실례"], answer: 1, description: "하지메마시떼는 처음 뵙겠습니다."),
     Hotdog(options: ["뭘바", "노바", "에바"], answer: 1, description: "노바가 막내입니다."),
-    Hotdog(options: ["에이미", "아이미", "케이미"], answer: 1, description: "I..J..K.."),
-
-
+    Hotdog(options: ["에이미", "아이미", "케이미"], answer: 1, description: "I..J..K..")
 ]

@@ -1,14 +1,8 @@
-//
-//  SwiftUIView.swift
-//
-//
-//  Created by Ha Jong Myeong on 2023/03/28.
-//
 import SwiftUI
-
 
 struct BossView: View {
     @EnvironmentObject var gameState: GameState
+    
     var body: some View {
         switch(gameState.currentBossIndex){
         case 0:
@@ -21,13 +15,5 @@ struct BossView: View {
         default:
             Image("Issac_1")
         }
-     
-
-    }
-}
-
-struct BossView_Previews: PreviewProvider {
-    static var previews: some View {
-        BossView()
     }
 }

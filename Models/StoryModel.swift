@@ -1,3 +1,5 @@
+// Story Model
+
 struct Round {
     let title: String
     let notion: String
